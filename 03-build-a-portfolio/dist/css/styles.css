@@ -40,7 +40,11 @@ h4 {
 
 hr {
     width: 100%;
+    height: 2px;
+    color: #7d97ad;
     margin: 1em 0 1em 0;
+    /* Set the hr color */
+    background-color: #7d97ad; /* Modern Browsers */
 }
 
 a {
@@ -64,7 +68,7 @@ a:hover {
 .header {
     width: 100%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .header-title {
@@ -75,6 +79,10 @@ a:hover {
 .header-logo {
     width: 20%;
     text-align: left;
+}
+
+.header-logo-svg {
+    width: 70px;
 }
 
 
@@ -128,7 +136,7 @@ a:hover {
 /* make it responsive */
 @media screen and (max-width: 850px) {
     .project {
-        width: 40%;
+        width: 45%;
         text-align: left;
     }
 
@@ -142,9 +150,7 @@ a:hover {
 }
 
 @media screen and (max-width: 520px) {
-    .header-logo {
-        display: none;
-    }
+    .header-logo,
     .header-title {
         text-align: center;
         width: 100%;
@@ -156,10 +162,6 @@ a:hover {
         width: 100%;
     }
 
-    .eyecatcher {
-        display: none;
-    }
-
     h1 {
         font-size: 3.0em;
     }
@@ -167,8 +169,6 @@ a:hover {
         font-size: 1.5em;
     }
 }
-
-
 
 @media screen and (min-width: 950px) {
     .container {

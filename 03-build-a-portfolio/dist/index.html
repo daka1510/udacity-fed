@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- scripts -->
-    <script type='text/javascript' src='js/script.js'></script>
-
     <!-- stylesheets and fonts-->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
@@ -18,7 +15,10 @@
 <body>
     <div class="container">
         <header class="header">
-            <div class="header-logo"><img src="http://placehold.it/80x80" alt="Logo"></div>
+            <div class="header-logo">
+                <!-- TODO: use inline svg to reduce number of requests -->
+                <img class="header-logo-svg" src="img/logo.svg" alt="">
+            </div>
             <div class="header-title text-right text-uppercase">
                 <h1>Daniel Kaulen</h1>
                 <h2>Front-End Ninja</h2>
@@ -26,30 +26,36 @@
         </header>
         <hr>
         <section class="eyecatcher">
-            <img class="eyecatcher-image" src="http://placehold.it/950x400" alt="Image 0">
+            <!-- photo credit: http://photos2.demandstudios.com/DM-Resize/photos.demandstudios.com%2Fgetty%2Farticle%2F235%2F38%2F522894751.jpg -->
+            <img
+                class="eyecatcher-image"
+                src="img/eyecatcher_w950.jpg"
+                alt="eyecatcher image"
+                srcset="img/eyecatcher_w950.jpg 950w, img/eyecatcher_w450.jpg 450w, img/eyecatcher_w300.jpg 300w"
+            >
         </section>
         <h3>Featured Work</h3>
         <section class="projects">
             <article class="project">
                     <picture>
-                        <img class="project-image" src="http://placehold.it/300x200" alt="Image 1">
+                        <img class="project-image" src="img/henn_w400.jpg" alt="screenshot of a (non-responsive) website I implemented in 2009">
                     </picture>
-                    <h4>Project 1</h4>
-                    <p class="project-subtitle"><a href="http://github.com/daka1510/2">http://github.com/daka1510/p1</a></p>
+                    <h4>2009</h4>
+                    <p class="project-subtitle"><a href="http://www.henn-bau.de">http://www.henn-bau.de</a></p>
             </article>
             <article class="project">
                     <picture>
-                        <img class="project-image" src="http://placehold.it/300x200" alt="Image 2">
+                        <img class="project-image" src="img/stollenwerk_w400.jpg" alt="screenshot of a (non-responsive) website I implemeted in 2010">
                     </picture>
-                    <h4>Project 2</h4>
-                    <p class="project-subtitle"><a href="http://github.com/daka1510/2">http://github.com/daka1510/p2</a></p>
+                    <h4>2010</h4>
+                    <p class="project-subtitle"><a href="http://www.malerbetrieb-stollenwerk.de">http://www.malerbetrieb-stollenwerk.de</a></p>
             </article>
             <article class="project">
                     <picture>
-                        <img class="project-image" src="http://placehold.it/300x200" alt="Image 3">
+                        <img class="project-image" src="img/hansa_w400.jpg" alt="screenshot of a web portal I set up in 2012">
                     </picture>
-                    <h4>Project 3</h4>
-                    <p class="project-subtitle"><a href="http://github.com/daka1510/3">http://github.com/daka1510/p3</a></p>
+                    <h4>2012</h4>
+                    <p class="project-subtitle"><a href="http://www.hansa-simmerath.de">http://www.hansa-simmerath.de</a></p>
             </article>
         </section>
 
