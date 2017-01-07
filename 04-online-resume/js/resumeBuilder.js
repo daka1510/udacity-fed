@@ -44,7 +44,6 @@ var bio = {
     "name" : "Daniel Kaulen",
     "role" : "Software Engineer",
     "contacts" : {
-        "mobile" : "015158806296",
         "email" : "daniel.kaulen@gmx.de",
         "github" : "daka1510",
         "location" : "Aachen, Germany",
@@ -81,7 +80,6 @@ bio.display = function() {
     for (var key in bio.contacts) {
       if (bio.contacts.hasOwnProperty(key)) {
         $("#topContacts").append(HTMLcontactGeneric.replace("%contact%", key).replace("%data%", bio.contacts[key]))
-        console.log(key + " -> " + bio.contacts[key]);
       }
     }
 }
@@ -121,7 +119,6 @@ bio.display();
      }
  };
  displayWork();
- console.log(locationizer(work));
 
 $(document).click(function(loc) {
   logClicks(loc.pageX, loc.pageY)
