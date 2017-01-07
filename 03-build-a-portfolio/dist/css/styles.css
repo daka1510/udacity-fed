@@ -1,0 +1,177 @@
+* {
+    box-sizing: content-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size:14px;
+    font-weight: 400;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 3.5em;
+    margin: 0;
+    font-weight: 300;
+    margin: 0;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+h3 {
+    font-size: 2em;
+    color: #8498a7;
+    font-weight: 400;
+    margin: 1em 0 0.5em 0;
+}
+
+h4 {
+    font-size: 2em;
+    color: #303b45;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 0.5em 0 0.5em 0;
+}
+
+
+hr {
+    width: 100%;
+    margin: 1em 0 1em 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* header section */
+.header {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.header-title {
+    text-align: right;
+    width: 80%;
+}
+
+.header-logo {
+    width: 20%;
+    text-align: left;
+}
+
+
+/* main image */
+.eyecatcher {
+    width: 100%;
+}
+
+.eyecatcher-image {
+    width: 100%;
+}
+
+/* portfolio projects */
+.projects {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.project {
+    width: 30%;
+    text-align: center;
+}
+
+.project-image {
+    width: 100%;
+}
+
+.project-subtitle {
+    margin: 0 0 2em 0;
+}
+
+
+/* miscellaneous */
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+/* make it responsive */
+
+/* make it responsive */
+@media screen and (max-width: 850px) {
+    .project {
+        width: 40%;
+        text-align: left;
+    }
+
+    .project-subtitle {
+        margin: 0 0 2em 0;
+    }
+    h4 {
+        margin: 0.5em 0 0 0;
+    }
+
+}
+
+@media screen and (max-width: 520px) {
+    .header-logo {
+        display: none;
+    }
+    .header-title {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .project {
+        width: 100%;
+    }
+
+    .eyecatcher {
+        display: none;
+    }
+
+    h1 {
+        font-size: 3.0em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+}
+
+
+
+@media screen and (min-width: 950px) {
+    .container {
+        max-width: 950px;
+    }
+}
