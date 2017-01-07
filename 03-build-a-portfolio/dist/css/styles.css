@@ -41,10 +41,8 @@ h4 {
 hr {
     width: 100%;
     height: 2px;
-    color: #7d97ad;
     margin: 1em 0 1em 0;
-    /* Set the hr color */
-    background-color: #7d97ad; /* Modern Browsers */
+    background-color: #7d97ad;
 }
 
 a {
