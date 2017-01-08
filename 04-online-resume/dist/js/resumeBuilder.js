@@ -36,7 +36,7 @@ var education = {
         "dates" : "2015 - 2016" ,
         "url" : "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
     }]
-}
+};
 
 var work = {
     "jobs" : [{
@@ -69,19 +69,22 @@ var projects = {
         "dates" : "2015",
         "description" : "Trauma teams work under extreme time pressure while stabilizing critically injuredpatients and addressing life-threatening injuries. Over the years, several studieshave analyzed different opportunities for technological innovations in this field. Itwas found that there is no optimal position for team-based displays and that largescreens do not adequately address role-based information needs.<br>To compensate for this disadvantage, we analyzed the applicability of head-up displaysduring trauma resuscitations in an exploratory study. A generic prototypingframework for Google Glass was developed to support these efforts. As part of ouruser-centered design process, we conducted interviews with trauma doctors andobserved training sessions that incorporated a human patient simulator. Finally, aworking prototype offering HUD-based support for trauma teams was evaluatedduring two simulated resuscitations.<br>A qualitative analysis showed that the most important application area is the visualizationof vital signs in the field of view (i.e. the doctors do not need to lookaway from the patient to check the vital signs on team-based monitors). Additionally,contextual checklists on individual head-up displays can lead to improvedprotocol adherence and team communication. Our results reduce the design spacefor future projects and serve as basis for upcoming quantitative evaluations of theefficacy of using head-up displays during trauma resuscitation.",
         "images" : ["img/master-01.jpg","img/master-02.jpg","img/master-03.jpg"],
-        "location" : "San Diego, CA, USA"
+        "location" : "San Diego, CA, USA",
+        "url" : "http://hci.rwth-aachen.de/kaulen"
     },{
         "title" : "Internship, NARA Institute of Science and Technology",
         "dates" : "2013",
         "description" : "The development of a widely applicable automatic motion coaching system requires one to address a lot of issues including motion capturing, motion analysis and comparison, error detection as well as error feedback. In order to cope with this complexity, most existing approaches focus on a specific motion sequence or exercise. As a first step towards the development of a more generic system, this paper systematically analyzes different error and feedback types. A prototype of a feedback system that addresses multiple modalities is presented. The system allows to evaluate the applicability of the proposed feedback techniques for arbitrary types of motions in a next step.",
         "images" : ["img/naist-01.jpg", "img/naist-02.jpg"],
-        "location" : "Nara, Japan"
+        "location" : "Nara, Japan",
+        "url" : "http://ambient.naist.jp"
     },{
         "title" : "Bachelor Thesis, RWTH Aachen",
         "dates" : "2012",
         "description" : "This thesis analyzes the requirements of users of different generations with regard to future e-banking systems. An empirical study was conducted to verify six previously formulated hypotheses. The results show that the acceptance of such systems highly depends on factors such as age, gender and general technical affinity. It turned out that most of the older people are not yet willing to use such systems at all – independent of specific system characteristics. Additionally, it is more likely that men will use smart banking systems than women and that technical affinity has a positive influence on the general usage intention.",
         "images" : ["img/bachelor-01.jpg", "img/bachelor-02.jpg"],
         "location" : "Aachen, Germany",
+        "url" : "http://www.rwth-aachen.de"
     }]
 };
 
@@ -137,14 +140,14 @@ education.display = function() {
         this.onlineCourses.forEach(function(course) {
             $("#education").append(HTMLschoolStart);
             var formattedTitle = HTMLonlineTitle.replace("%data%", course.title).replace("%url%", course.url);
-            var formattedSchool = HTMLonlineSchool.replace("%data%", course.school)
-            var formattedDates = HTMLonlineDates.replace("%data%", course.dates)
+            var formattedSchool = HTMLonlineSchool.replace("%data%", course.school);
+            var formattedDates = HTMLonlineDates.replace("%data%", course.dates);
             $(".education-entry:last").append(formattedTitle
                 .concat(formattedSchool)
                 .concat(formattedDates)).append("<br>");
         });
     }
-}
+};
 
 work.display = function() {
     this.jobs.forEach(function(job) {
@@ -164,9 +167,9 @@ projects.display = function() {
     this.projects.forEach(function(project) {
         // compute markup
         $("#projects").append(HTMLprojectStart);
-        var projectData = HTMLprojectTitle.replace("%data%", project.title)
-                        + HTMLprojectDates.replace("%data%", project.dates)
-                        + HTMLprojectDescription.replace("%data%", project.description);
+        var projectData = HTMLprojectTitle.replace("%data%", project.title).replace("%url%", project.url)
+                        .concat(HTMLprojectDates.replace("%data%", project.dates))
+                        .concat(HTMLprojectDescription.replace("%data%", project.description));
 
         project.images.forEach(function(imageUrl) {
             projectData = projectData + HTMLprojectImage.replace("%data%", imageUrl).replace("%alt%", "Image of " + project.title);
@@ -174,11 +177,13 @@ projects.display = function() {
         // add to DOM
         $(".project-entry:last").append(projectData);
     });
-}
+};
+
+// trigger function calls
 projects.display();
 education.display();
 bio.display();
 work.display();
 
-
+// add map
 $("#mapDiv").append(googleMap);
