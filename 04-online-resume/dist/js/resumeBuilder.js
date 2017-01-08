@@ -9,7 +9,7 @@ var bio = {
         "github" : "daka1510",
         "location" : "Aachen, Germany"
     },
-    "welcomeMessage" : "lorem ipsum",
+    "welcomeMessage" : "\"We can only see a short distance ahead, but we can see plenty there that needs to be done\" (Alan Turing)",
     "skills": ["Java", "Node.JS", "HTML", "JavaScript", "CSS"],
     "bioPic" : "img/me.png"
 };
