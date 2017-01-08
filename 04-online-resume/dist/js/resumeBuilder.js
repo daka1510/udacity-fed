@@ -1,6 +1,3 @@
-// TODO: refactor (add work.display, projects.display, ...)
-// TODO: get map working
-// TODO: make it my own, e.g. https://d3js.org/, https://developers.google.com/maps/documentation/javascript/tutorial
 var work = {
     "jobs" : [{
         "employer" : "IBM Research & Development GmbH",
@@ -22,19 +19,19 @@ var projects = {
         "title" : "Bachelor Thesis",
         "dates" : "2012",
         "description" : "An awesome text about my thesis",
-        "images" : ["img/197x148.gif","img/197x148.gif","img/197x148.gif"],
+        "images" : ["http://lorempixel.com/197/148/animals/","http://lorempixel.com/197/148/animals/","http://lorempixel.com/197/148/animals/"],
         "location" : "Aachen"
     },{
         "title" : "Master Thesis",
         "dates" : "2015",
         "description" : "An awesome text about my thesis",
-        "images" : ["img/197x148.gif", "img/197x148.gif"],
+        "images" : ["http://lorempixel.com/197/148/animals/", "http://lorempixel.com/197/148/animals/"],
         "location" : "Aachen",
     }, {
         "title" : "Internship",
         "dates" : "2015",
         "description" : "An awesome text about my thesis",
-        "images" : ["img/197x148.gif", "img/197x148.gif"],
+        "images" : ["http://lorempixel.com/197/148/animals/", "http://lorempixel.com/197/148/animals/"],
         "location" : "Nara, Japan"
     }]
 };
