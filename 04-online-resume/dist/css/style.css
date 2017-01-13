@@ -49,7 +49,7 @@ h3 {
 h4 {
     font-weight: bold;
     font-size: 14px;
-    color: #4a4a4a;
+    color: #fff;
     line-height: 17px;
 }
 
@@ -105,7 +105,7 @@ a {
 }
 
 .orange {
-    background-color: #f5ae23;
+    background-color: #e88a0c;
 }
 
 .orange-text {
@@ -123,13 +123,13 @@ a {
     clear: both;
 }
 
-.dark-gray {
-    background-color: #4a4a4a;
+.dark-blue {
+    background-color: #006ec0;
 }
 
 /* TODO: Replace with image later */
 #header {
-    background-color: #484848;
+    background-color: #006ec0;
 }
 
 .flex-box {
@@ -148,6 +148,12 @@ a {
     padding: 10px;
 }
 
+.skill {
+    list-style-type: circle;
+    color: #fff;
+    margin-left:20px;
+}
+
 .center-content {
     padding: 2.5% 5%;
 }
@@ -161,6 +167,11 @@ ul {
     padding: 10px;
     width: 200px;
     display: none;
+    border-radius: 20px;
+}
+
+.workpic {
+    border-radius: 20px;
 }
 
 img {

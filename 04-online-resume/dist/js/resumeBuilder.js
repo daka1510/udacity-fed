@@ -1,3 +1,5 @@
+"use strict";
+
 // resume section data
 
 var bio = {
