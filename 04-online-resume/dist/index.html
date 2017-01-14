@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <!-- This tells the browser how to read the document. -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-     <!-- Tells the browser what the title of this page should be. -->
+    <!-- Tells the browser what the title of this page should be. -->
     <title>Resume</title>
 
     <!-- Load the page styles. -->
@@ -14,6 +15,7 @@
     <!-- Load scripts. -->
     <script src="//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCtC1RvgTq_yiC-brX7SuQ5qpPoFBKo-7I"></script>
 </head>
+
 <body>
     <div id="main">
         <div id="header" class="center-content clear-fix">
@@ -43,27 +45,28 @@
     <script src="js/helper.js"></script>
     <script src="js/resumeBuilder.js"></script>
     <script>
-        if(document.getElementsByClassName('flex-item').length === 0) {
-          document.getElementById('topContacts').style.display = 'none';
+        if (document.getElementsByClassName('flex-item').length === 0) {
+            document.getElementById('topContacts').style.display = 'none';
         }
-        if(document.getElementsByTagName('h1').length === 0) {
-          document.getElementById('header').style.display = 'none';
+        if (document.getElementsByTagName('h1').length === 0) {
+            document.getElementById('header').style.display = 'none';
         }
-        if(document.getElementsByClassName('work-entry').length === 0) {
-          document.getElementById('workExperience').style.display = 'none';
+        if (document.getElementsByClassName('work-entry').length === 0) {
+            document.getElementById('workExperience').style.display = 'none';
         }
-        if(document.getElementsByClassName('project-entry').length === 0) {
-          document.getElementById('projects').style.display = 'none';
+        if (document.getElementsByClassName('project-entry').length === 0) {
+            document.getElementById('projects').style.display = 'none';
         }
-        if(document.getElementsByClassName('education-entry').length === 0) {
-          document.getElementById('education').style.display = 'none';
+        if (document.getElementsByClassName('education-entry').length === 0) {
+            document.getElementById('education').style.display = 'none';
         }
-        if(document.getElementsByClassName('flex-item').length === 0) {
-          document.getElementById('lets-connect').style.display = 'none';
+        if (document.getElementsByClassName('flex-item').length === 0) {
+            document.getElementById('lets-connect').style.display = 'none';
         }
-        if(document.getElementById('map') === null) {
-          document.getElementById('mapDiv').style.display = 'none';
+        if (document.getElementById('map') === null) {
+            document.getElementById('mapDiv').style.display = 'none';
         }
     </script>
 </body>
+
 </html>

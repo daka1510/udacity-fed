@@ -58,9 +58,7 @@ h3,
 h4,
 h5 {
     padding: 10px 5%;
-
 }
-
 
 .date-text {
     font-style: italic;
@@ -76,7 +74,6 @@ h5 {
     color: #999;
     line-height: 16px;
     float: right;
-
 }
 
 p {
@@ -151,7 +148,7 @@ a {
 .skill {
     list-style-type: circle;
     color: #fff;
-    margin-left:20px;
+    margin-left: 20px;
 }
 
 .center-content {
@@ -191,25 +188,27 @@ span {
 @media only screen and (max-width: 1024px) {
     #lets-connect {
         margin-top: 5%;
-    }
+    };
 }
 
 @media only screen and (max-width:900px) {
     .biopic {
         width: 175px;
-    }
+    };
 }
 
 @media only screen and (max-width: 750px) {
     #lets-connect {
         margin-top: 10%;
     }
+
     .biopic {
         width: 150px;
     }
+
     .welcome-message {
         display: none;
-    }
+    };
 }
 
 #map {
@@ -228,5 +227,5 @@ span {
     #skills-h3,
     .biopic {
         display: block;
-    }
+    };
 }
