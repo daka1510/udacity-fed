@@ -13,7 +13,7 @@ var bio = {
     },
     "welcomeMessage": "\"We can only see a short distance ahead, but we can see plenty there that needs to be done\" (Alan Turing)",
     "skills": ["Java", "Node.JS", "HTML", "JavaScript", "CSS"],
-    "bioPic": "img/me.png"
+    "biopic": "img/me.png"
 };
 
 var education = {
@@ -107,7 +107,7 @@ bio.display = function() {
     }
 
     // add picture along with a welcome message
-    $("#header").append(HTMLbioPic.replace("%data%", this.bioPic).replace("%name%", this.name));
+    $("#header").append(HTMLbioPic.replace("%data%", this.biopic).replace("%name%", this.name));
     $("#header").append(HTMLwelcomeMsg.replace("%data%", this.welcomeMessage));
 
     // add skills
@@ -158,10 +158,12 @@ work.display = function() {
         var formattedJobTitle = HTMLworkTitle.replace("%data%", job.title);
         var formattedJobDates = HTMLworkDates.replace("%data%", job.dates);
         var formattedJobDescription = HTMLworkDescription.replace("%data%", job.description);
+        var formattedJobLocation = HTMLworkLocation.replace("%data%", job.location);
         $(".work-entry:last").append(formattedEmployer
             .concat(formattedJobTitle)
             .concat(formattedJobDates)
-            .concat(formattedJobDescription));
+            .concat(formattedJobDescription)
+            .concat(formattedJobLocation));
     });
 };
 
