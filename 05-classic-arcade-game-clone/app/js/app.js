@@ -88,7 +88,6 @@ var Player = function(aSprite) {
 // Update the player's position if it has reached the river
 Player.prototype.update = function() {
     if(this.hasReachedWater()){
-        console.log(allEnemies.length);
         gameState.increaseScoreBy(allEnemies.length);
         this.reset();
     }
@@ -197,7 +196,7 @@ GameState.prototype.render = function() {
     if(this.youWonMessage) {
         statusText = this.youWonMessage;
     } else {
-        statusText = "Score: " + this.score + " \t\t\tLives: " + this.remainingLives + "\t\t\tEnemies: " + allEnemies.length;
+        statusText = "Score: " + this.score + "/" + SCORE_GAME_OVER + " \t\t\tLives: " + this.remainingLives + "\t\t\tEnemies: " + allEnemies.length;
     }
     // status text style
     ctx.font = '20px serif';
