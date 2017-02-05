@@ -1,3 +1,5 @@
+'use strict';
+
 //
 // Parameters to tweak the gaming experience
 //
@@ -47,16 +49,15 @@ Enemy.prototype.update = function(dt) {
         this.speed = getRandomNumber(MIN_ENEMY_SPEED, MAX_ENEMY_SPEED);
         // add an additional enemy with a fixed probability
         if(allEnemies.length < MAX_NUMBER_OF_ENEMIES && getRandomNumber(1,100) > (100 - ADD_ADDITIONAL_ENEMY_WITH_PROBABILITY)){
-            var enemy = new Enemy();
-            console.log("adding an additional enemy: " + enemy);
-            allEnemies.push(new Enemy());
+            // call utility function to add an additional enemy
+            addAdditionalEnemy();
         }
     }
     // check if this enemy has collided with the player
     if(!isIntersectionEmpty(this.collissionZone, player.collissionZone)){
         player.reset();
         gameState.playerDied();
-    };
+    }
 };
 
 // Draw the enemy on the screen
@@ -73,7 +74,7 @@ Enemy.prototype.updateCollissionZone = function(){
         },
         "width": 100,
         "height": 70
-    }
+    };
 };
 
 //
@@ -116,8 +117,7 @@ Player.prototype.handleInput = function(key) {
     }
     // for performance reasons, the player's collission zone is only updated when it has moved
     this.updateCollissionZone();
-    console.log(this.sprite + " has moved to: (" +  this.x + ", " + this.y + "), collission zone: " + JSON.stringify(this.collissionZone));
-};
+    };
 
 // Move the player to the left
 Player.prototype.moveLeft = function() {
@@ -125,7 +125,7 @@ Player.prototype.moveLeft = function() {
     if(this.x >= horizontalOffset){
         this.x = this.x-horizontalOffset;
     }
-}
+};
 
 // Move the player to the rigth
 Player.prototype.moveRight = function() {
@@ -133,7 +133,7 @@ Player.prototype.moveRight = function() {
     if(this.x <= 301){
         this.x = this.x+horizontalOffset;
     }
-}
+};
 
 // Move the player up
 Player.prototype.moveUp = function() {
@@ -141,7 +141,7 @@ Player.prototype.moveUp = function() {
     if(this.y >= 69){
         this.y = this.y-verticalOffset;
     }
-}
+};
 
 // Move the player down
 Player.prototype.moveDown = function() {
@@ -149,12 +149,12 @@ Player.prototype.moveDown = function() {
     if(this.y < 400) {
         this.y = this.y + 83;
     }
-}
+};
 
 // Check if the player has reached the water (resp. the river)
 Player.prototype.hasReachedWater = function() {
     return this.y < 0;
-}
+};
 
 // Reset the player's position
 Player.prototype.reset = function() {
@@ -173,7 +173,7 @@ Player.prototype.updateCollissionZone = function(){
         },
         "width": 60,
         "height": 80
-    }
+    };
 };
 
 //
@@ -187,7 +187,7 @@ var GameState = function() {
 GameState.prototype.init = function(){
     this.score = 0;
     this.remainingLives = NUMBER_OF_LIVES;
-}
+};
 
 // Render the game state
 GameState.prototype.render = function() {
@@ -207,7 +207,7 @@ GameState.prototype.render = function() {
 
 // Update the game state and trigger the reset of the game if no lives remain
 GameState.prototype.update = function() {
-    if(this.remainingLives == 0) {
+    if(this.remainingLives === 0) {
         this.init();
         allEnemies = createEnemies(INITIAL_NUMBER_OF_ENEMIES);
     }
@@ -216,7 +216,7 @@ GameState.prototype.update = function() {
         this.youWonMessage = "Congratulations. You have won. Go back to work.";
         allEnemies = [];
     }
-}
+};
 
 // Increase the score by the given number
 GameState.prototype.increaseScoreBy = function(aNumber) {
@@ -260,6 +260,11 @@ function isIntersectionEmpty(aCollissionZone1, aCollissionZone2) {
     var h2 = aCollissionZone2.height;
     // see also: http://stackoverflow.com/questions/13390333/two-rectangles-intersection
     return (x1 + w1 < x2 || x2 + w2 < x1 || y1 + h1 < y2 || y2 + h2 < y1);
+}
+
+// adds a new enemy to the game
+function addAdditionalEnemy(){
+    allEnemies.push(new Enemy());
 }
 
 // Creates the given number of enemies and returns an array that contains those enemies
