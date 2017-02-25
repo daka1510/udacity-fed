@@ -52,11 +52,14 @@
         border-top: 1px solid #ccc;
       }
       footer span { float: right; font-style: italic; }
-
       /* Smartphones (portrait) */
       @media only screen and (max-width: 480px) {
         body { font-size: 12px;}
         header p { padding-left: 4.5em;}
+      }
+
+      @media only screen and (max-width: 300px) {
+          .preview {display:none;}
       }
     </style>
     <script>
@@ -96,25 +99,25 @@
       <div class="content">
         <ul>
           <li>
-            <img src="img/preview_2048">
+            <img class="preview" src="img/preview_2048.jpg">
             <a href="project-2048.html">Build Your Own 2048!</a>
             <p>I made my own version of 2048. How cool is that!?</p>
           </li>
 
           <li>
-            <img src="img/preview_perf.jpg">
+            <img class="preview" src="img/preview_perf.jpg">
             <a href="project-webperf.html">Website Performance Optimization</a>
             <p>Hey... this class looks familiar.</p>
           </li>
 
           <li>
-            <img src="img/preview_mobile.jpg">
+            <img class="preview" src="img/preview_mobile.jpg">
             <a href="project-mobile.html">Mobile Web Development</a>
             <p>Making mobile apps isn't so hard after all.</p>
           </li>
 
           <li>
-            <img src="img/preview_pizzeria.jpg">
+            <img class="preview" src="img/preview_pizzeria.jpg">
             <a href="views/pizza.html">Cam's Pizzeria</a>
             <p>Who wants a performant pizza?</p>
           </li>

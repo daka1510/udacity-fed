@@ -44,8 +44,8 @@ gulp.task('serve', function() {
   browserSync({
     port: portVal,
     notify: false,
-    server: 'dist',
-    baseDir: 'dist',
+    server: 'app',
+    baseDir: 'app',
     open: false,
   });
 });
