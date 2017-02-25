@@ -27,8 +27,10 @@ changes in `views/js/main.js`
 - introduced two different view modes: mobile, desktop
   - added function `useAnimatedPizzaSlices` that ensures that pizza slices are not animated on mobile devices for performance reasons
   - used media query to switch mode based on device width (see `window.matchMedia("(min-width: 480px)")`
-- fixed forced reflow issue in `updatePositions` function
+- fixed forced reflow issue in `updatePositions` function`
 - reduced number of animated pizza slices to 12
+- added `will-change:left;` to `.mover` class in `views/css/style.css`
+
  
 #### Computational Efficiency
 - simplified function `changePizzaSizes` and removed FSL bug in analogy to the solution presented in the course (cf. Browser Rendering Optimization > Styles and Layout > Quiz: Stop FSL) 
