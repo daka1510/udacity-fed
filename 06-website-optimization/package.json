@@ -1,7 +1,13 @@
 {
   "devDependencies": {
     "browser-sync": "^2.18.8",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-exit": "0.0.2",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-size": "^2.1.0",
+    "ngrok": "^2.2.6",
+    "psi": "^3.0.0",
+    "run-sequence": "^1.2.2"
   },
   "engines": {
     "node": ">=0.10.0"

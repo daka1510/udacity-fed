@@ -3,12 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content=" FILL ME IN ">
-    <meta name="author" content=" FILL ME IN ">
+    <meta name="description" content="Project Submission: Udacity FEND project 06">
+    <meta name="author" content="Daniel Kaulen">
     <title>Cameron Pittman: Portfolio</title>
-
-    <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
     <link href="css/print.css" rel="stylesheet" media="print">
@@ -18,9 +15,22 @@
       window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
       ga('create', 'UA-XXXXX-Y', 'auto');
       ga('send', 'pageview');
+
+      // Measuring the Critical Rendering Path with Navigation Timing
+      // https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp
+      function logCRP() {
+        var t = window.performance.timing,
+          dcl = t.domContentLoadedEventStart - t.domLoading,
+          complete = t.domComplete - t.domLoading;
+        var stats = document.getElementById("crp-stats");
+        stats.textContent = 'DCL: ' + dcl + 'ms, onload: ' + complete + 'ms';
+      }
+
+      window.addEventListener("load", function(event) {
+        logCRP();
+      });
     </script>
     <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <script async src="js/perfmatters.js"></script>
   </head>
 
   <body>
@@ -55,7 +65,7 @@
           </li>
 
           <li>
-            <img style="width: 100px;" src="views/images/pizzeria.jpg">
+            <img style="width: 100px;" src="views/images/pizzeria_small.jpg">
             <a href="views/pizza.html">Cam's Pizzeria</a>
             <p>Who wants a performant pizza?</p>
           </li>
