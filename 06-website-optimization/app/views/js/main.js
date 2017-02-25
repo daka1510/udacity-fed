@@ -421,38 +421,24 @@ var resizePizzas = function(size) {
 
   changeSliderLabel(size);
 
-  // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
-  function determineDx (elem, size) {
-    var oldwidth = elem.offsetWidth;
-    var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
-    var oldsize = oldwidth / windowwidth;
-
-    // Changes the slider value to a percent width
-    function sizeSwitcher (size) {
-      switch(size) {
-        case "1":
-          return 0.25;
-        case "2":
-          return 0.3333;
-        case "3":
-          return 0.5;
-        default:
-          console.log("bug in sizeSwitcher");
-      }
-    }
-
-    var newsize = sizeSwitcher(size);
-    var dx = (newsize - oldsize) * windowwidth;
-
-    return dx;
-  }
-
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    switch(size) {
+      case "1":
+        newWidth = 25;
+        break;
+      case "2":
+        newWidth = 33.333;
+        break;
+      case "3":
+        newWidth = 50;
+        break;
+      default:
+        console.log("bug in sizeSwitcher");
+    }
+    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+    for (var i = 0; i < randomPizzas.length; i++) {
+      randomPizzas[i].style.width = newWidth + "%";
     }
   }
 
@@ -493,7 +479,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
   console.log("Average time to generate last 10 frames: " + sum / 10 + "ms");
 }
 
-
+// updates the positions of the background pizza slices before the next animation frame is rendered
 function updatePositionsBeforeNextRepaint(){
   window.requestAnimationFrame(updatePositions);
 }
@@ -509,12 +495,14 @@ function updatePositions() {
   var items = document.querySelectorAll('.mover');
   var sizes = [];
   var phases = [];
-  // avoid Forced reflow
+
+  // temporarily store layout properties in memory to avoid avoid forced reflow
   for (var i = 0; i < items.length; i++) {
     sizes.push(items[i].basicLeft);
     phases.push(Math.sin((document.body.scrollTop / 1250) + (i % 5)));
   }
 
+  // batch update: change styles
   for (var i = 0; i < items.length; i++) {
     items[i].style.left = sizes[i] + 100 * phases[i] + 'px';
   }
@@ -529,30 +517,32 @@ function updatePositions() {
   }
 }
 
+// use media query to implement different view modes: mobile, desktop
 if (matchMedia) {
   var mediaQuery = window.matchMedia("(min-width: 480px)");
   mediaQuery.addListener(widthHasChanged);
   widthHasChanged(mediaQuery);
 }
 
+// this function is called when the matching status of the media query changes
 function widthHasChanged(mediaQuery) {
   if (mediaQuery.matches) {
     // window width >= 480 px
-    console.log("desktop mode: render ugly pizza slices in the background");
+    console.log("desktop mode: animate ugly pizza slices in the background");
     useAnimatedPizzaSlices(true);
   } else {
     // window width < 480 px
     useAnimatedPizzaSlices(false);
-    console.log("mobile mode: do not render ugly pizza slices");
-
+    console.log("mobile mode: do not animate ugly pizza slices for performance reasons");
   }
 }
 
+// registers or removes event handlers responsible for animating background pizza slices
 function useAnimatedPizzaSlices(val) {
   if(val === true) {
     window.addEventListener('scroll', updatePositionsBeforeNextRepaint);
   } else {
-      window.removeEventListener('scroll', updatePositionsBeforeNextRepaint);
+    window.removeEventListener('scroll', updatePositionsBeforeNextRepaint);
   }
 }
 
@@ -560,6 +550,7 @@ function useAnimatedPizzaSlices(val) {
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 4  ;
   var s = 256;
+  // add 12 pizza slices (3 rows, 4 per row)
   for (var i = 0; i < 12; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
@@ -570,5 +561,5 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
-  updatePositions();
+  updatePositionsBeforeNextRepaint();
 });
