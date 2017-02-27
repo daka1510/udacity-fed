@@ -548,16 +548,18 @@ function useAnimatedPizzaSlices(val) {
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 4  ;
+  var cols = 8;
   var s = 256;
-  // add 12 pizza slices (3 rows, 4 per row)
-  for (var i = 0; i < 12; i++) {
+  var rows = Math.ceil(window.screen.height/s);
+  var numPizzas = rows * cols;
+
+  for (var i = 0; i < numPizzas; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.basicLeft = 300 + (i % cols) * s;
+    elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
