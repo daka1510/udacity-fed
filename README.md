@@ -8,3 +8,4 @@
 | Project 04 - Online Resume | [/04-online-resume](https://daka1510.github.io/udacity-fend/04-online-resume/dist/) |
 | Project 05 - Classic Arcade Game Clone | [/05-classic-arcade-game-clone](https://daka1510.github.io/udacity-fend/05-classic-arcade-game-clone/app/) |
 | Project 06 - Website Optimization | [/06-website-optimization](https://daka1510.github.io/udacity-fend/06-website-optimization/app/) |
+| Project 07 - Neighborhood Map | [07-neighborhood-map-project](https://daka1510.github.io/udacity-fend/07-neighborhood-map-project/app/) |
