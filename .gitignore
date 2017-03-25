@@ -30,3 +30,4 @@ node_modules
 .lock-wscript
 
 *.sublime-workspace
+*.sublime-gulp.cache

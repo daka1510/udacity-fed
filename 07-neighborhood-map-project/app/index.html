@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Neighborhood Map</title>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <!-- custom styles -->
+    <link rel="stylesheet" href="css/style.css" >
+
+    <!-- custom scripts -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js'></script>
+    <script src='js/map.js'></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Daniel Kaulen</a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        </form>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container-fluid">
+          <div id="map"></div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container-fluid">
+        <span class="text-muted">Neighborhood Map Project (Daniel Kaulen)</span>
+      </div>
+    </footer>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBIG1pPil9aDRWGqSPizkOkoqL7HipXOyY&callback=initMap"></script>
+  </body>
+</html>

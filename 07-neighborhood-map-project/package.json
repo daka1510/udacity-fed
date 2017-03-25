@@ -1,0 +1,11 @@
+{
+  "name": "07-neighborhood-map-project",
+  "version": "1.0.0",
+  "description": "submission for project 07",
+  "author": "Daniel Kaulen",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-open": "^2.0.0"
+  }
+}
