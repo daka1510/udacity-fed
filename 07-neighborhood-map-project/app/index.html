@@ -13,8 +13,14 @@
     <!-- custom styles -->
     <link rel="stylesheet" href="css/style.css" >
 
-    <!-- custom scripts -->
+    <!-- knockout, bootstrap and dependencies (loaded from CDN for better performance) -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <!-- custom scripts -->
+    <script src='js/constants.js'></script>
     <script src='js/map.js'></script>
   </head>
 
@@ -24,18 +30,25 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand" href="#">Daniel Kaulen</a>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-        </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        </form>
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary" data-bind="text: categoryFilter"></button>
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+        <div class="dropdown-menu">
+          <!-- ko foreach: uniqueCategories -->
+          <a class="dropdown-item" href="#" data-bind="text: $data, click: $parent.filterByCategory"></a>
+          <!-- /ko -->
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" data-bind="click: resetFilter">Reset</a>
+        </div>
       </div>
     </nav>
 
     <main>
       <div class="container-fluid">
           <div id="map"></div>
+      </div>
+      <div class="list-group" data-bind="foreach: filteredLocations">
+        <a href="#" class="list-group-item list-group-item-action" data-bind="text: name"></a>
       </div>
     </main>
 
@@ -44,6 +57,7 @@
         <span class="text-muted">Neighborhood Map Project (Daniel Kaulen)</span>
       </div>
     </footer>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBIG1pPil9aDRWGqSPizkOkoqL7HipXOyY&callback=initMap"></script>
+    <script src='js/main.js'></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBIG1pPil9aDRWGqSPizkOkoqL7HipXOyY&callback=initApp"></script>
   </body>
 </html>

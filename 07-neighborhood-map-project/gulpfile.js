@@ -10,7 +10,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function(){
-  gulp.watch(['./app/**/*.*'], ['reload']);
+  gulp.watch(['./app/index.html'], ['reload']);
 });
 
 gulp.task('reload', function(){
