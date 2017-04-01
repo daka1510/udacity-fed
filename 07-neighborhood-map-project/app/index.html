@@ -31,25 +31,29 @@
       </button>
       <a class="navbar-brand" href="#">Daniel Kaulen</a>
       <div class="btn-group">
-        <button type="button" class="btn btn-secondary" data-bind="text: categoryFilter"></button>
+        <button type="button" class="btn btn-secondary" data-bind="text: categoryFilter() ?  categoryFilter : 'No filter'"></button>
         <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
         <div class="dropdown-menu">
           <!-- ko foreach: uniqueCategories -->
           <a class="dropdown-item" href="#" data-bind="text: $data, click: $parent.filterByCategory"></a>
           <!-- /ko -->
+          <!-- ko if: categoryFilter()-->
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" data-bind="click: resetFilter">Reset</a>
+          <!-- /ko -->
         </div>
       </div>
     </nav>
 
     <main>
       <div class="container-fluid">
-          <div id="map"></div>
+        <div id="map"></div>
       </div>
-      <div class="list-group" data-bind="foreach: filteredLocations">
-        <a href="#" class="list-group-item list-group-item-action" data-bind="text: name"></a>
+      <!--
+      <div class="list-group" id="table" data-bind="foreach: filteredLocations">
+        <a href="#" class="list-group-item" data-bind="text: name"></a>
       </div>
+      -->
     </main>
 
     <footer>

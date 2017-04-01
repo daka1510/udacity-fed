@@ -40,10 +40,10 @@ const LOCATIONS = [
     },
     {
       name : "Location 5",
-      category : "Category 5",
+      category : "Category 4",
       position : {
         lat : 44.6662305,
-        lng : 9.0370843
+        lng : 9.0240843
       }
     }
   ];

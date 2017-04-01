@@ -6,7 +6,7 @@ var initApp = function init() {
   // add location entries to the Knockout ViewModel and the map
   for (var i = 0; i < LOCATIONS.length; i++) {
     var currentLocation = LOCATIONS[i];
-    Map.addLocation(currentLocation);
+    //Map.addLocation(currentLocation);
     myViewModel.addLocation(currentLocation);
   };
 
@@ -28,7 +28,7 @@ var ViewModel = function() {
     var filter = self.categoryFilter();
     var result = self.allLocations().filter(function(locationItem) {
       // if a filter is set, only return locations that match the criteria
-      return filter.length === 0 || locationItem.category() === filter;
+      return filter.length === 0 || locationItem.category === filter;
     });
     return result;
   });
@@ -36,7 +36,7 @@ var ViewModel = function() {
   self.uniqueCategories = ko.computed(function() {
     // map locations to an array of categories
     var categories = self.allLocations().map(function(location) {
-      return location.category();
+      return location.category;
     });
 
     // make sure the resulting array only contains unique categories
@@ -56,7 +56,7 @@ var ViewModel = function() {
 
 // function that allows to add locations that are tracked by the view model
 ViewModel.prototype.addLocation = function(locationItem) {
-  this.allLocations.push(new Location(locationItem));
+  this.allLocations.push(locationItem);
 };
 
 var Location = function(data) {
@@ -67,6 +67,8 @@ var Location = function(data) {
 // initialize view model and apply bindings
 var myViewModel = new ViewModel();
 myViewModel.filteredLocations.subscribe(function(arr){
-  console.log(arr);
+  Map.deleteMarkers();
+  Map.showLocations(arr);
+  Map.fitBounds();
 });
 ko.applyBindings(myViewModel);
