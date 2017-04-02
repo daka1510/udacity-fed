@@ -49,13 +49,13 @@
           </form>
         </div>
       </nav>
+
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-4">
             <h2>List of Locations</h2>
-
             <div class="list-group" id="table" data-bind="foreach: filteredLocations">
-              <a href="#" class="list-group-item" data-bind="text: name"></a>
+              <a href="#" class="list-group-item list-group-item-action" data-bind="text: name, click: $parent.selectItem"></a>
             </div>
           </div>
           <div class="col-12 col-md-8">
@@ -67,9 +67,6 @@
       </div>
     </main>
 
-    <footer>
-    Hello Footer
-    </footer>
     <script src='js/main.js'></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBIG1pPil9aDRWGqSPizkOkoqL7HipXOyY&callback=initApp"></script>
   </body>

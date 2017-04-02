@@ -51,18 +51,18 @@ var ViewModel = function() {
   // function that resets the filter criteria
   self.resetFilter = function() {
     self.categoryFilter("");
-  }
+  };
+
+  self.selectItem = function(locationItem) {
+    Map.recenter(locationItem);
+    Map.showInfoWindow(locationItem);
+  };
 };
 
 // function that allows to add locations that are tracked by the view model
 ViewModel.prototype.addLocation = function(locationItem) {
   this.allLocations.push(locationItem);
 };
-
-var Location = function(data) {
-  this.name = ko.observable(data.name);
-  this.category = ko.observable(data.category);
-}
 
 // initialize view model and apply bindings
 var myViewModel = new ViewModel();

@@ -19,14 +19,13 @@ var Map = (function() {
     defaultIcon = makeMarkerIcon('0091ff');
     highlightedIcon = makeMarkerIcon('FFFF24');
     hoveredIcon = makeMarkerIcon('FFFE24');
+    largeInfoWindow = new google.maps.InfoWindow();
   }
 
-
+  var largeInfoWindow
 
   // This function adds an array of location markers to the map view.
   function showLocations(locationItems) {
-
-    var largeInfoWindow = new google.maps.InfoWindow();
 
     for(var i = 0; i < locationItems.length; i++) {
       var currentItem = locationItems[i];
@@ -39,7 +38,6 @@ var Map = (function() {
 
       // create an on click event to open an infowindow at each marker
       marker.addListener('click', function() {
-        this.setAnimation()
         populateInfoWindow(this, largeInfoWindow);
       });
 
@@ -122,10 +120,27 @@ var Map = (function() {
     return markerImage;
   }
 
+  function recenter(locationItem) {
+    googleMap.setCenter(locationItem.position);
+    googleMap.setZoom(8);
+  }
+
+  function showInfoWindow(locationItem){
+    console.log("showing info window for " + JSON.stringify(locationItem));
+    var idx = markers.findIndex(function(marker){
+      return marker.title === locationItem.name;
+    })
+    if(idx > 0) {
+      populateInfoWindow(markers[idx], largeInfoWindow);
+    }
+  }
+
   return {
     init: init,
     showLocations: showLocations,
     fitBounds: fitBounds,
-    deleteMarkers: deleteMarkers
+    deleteMarkers: deleteMarkers,
+    recenter: recenter,
+    showInfoWindow: showInfoWindow
   };
 })();
