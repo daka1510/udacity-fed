@@ -7,43 +7,58 @@ const CONFIG = {
 
 const LOCATIONS = [
     {
-      name : "Location 1",
-      category : "Category 1",
+      name : "The Tipsy Crow",
+      category : "Nightlife",
       position : {
-        lat : 48.6662305,
-        lng : 9.0370843
+        lat : 32.7134073,
+        lng : -117.1617024
+      },
+      foursquare : {
+        id: "4b7e09eef964a52046e02fe3"
       }
     },
     {
-      name : "Location 2",
-      category : "Category 1",
+      name : "Altitude Sky Lounge",
+      category : "Nightlife",
       position : {
-        lat : 48.6662252,
-        lng : 9.0042536
+        lat : 32.7085815,
+        lng : -117.1607147
+      },
+      foursquare : {
+        id: "429ba900f964a52092241fe3"
       }
     },
     {
-      name : "Location 3",
-      category : "Category 3",
+      name : "Pacific Beach AleHouse",
+      category : "Nightlife",
       position : {
-        lat : 44.4662305,
-        lng : 9.0070843
+        lat : 32.7943469,
+        lng : -117.2575481
+      },
+      foursquare : {
+        id: "4aa2b020f964a520124220e3"
       }
     },
     {
-      name : "Location 4",
-      category : "Category 4",
+      name : "Tavern At The Beach",
+      category : "Nightlife",
       position : {
-        lat : 44.6662305,
-        lng : 9.0370843
+        lat : 32.7984808,
+        lng : -117.2502593,
+      },
+      foursquare : {
+        id: "40e0b100f964a520c2021fe3"
       }
     },
     {
-      name : "Location 5",
-      category : "Category 4",
+      name : "Tourmaline Surfing Park",
+      category : "Fun",
       position : {
-        lat : 44.6662305,
-        lng : 9.0240843
+        lat : 32.8054291,
+        lng : -117.2616015
+      },
+      foursquare : {
+        id: "4b5cf61bf964a520ba4c29e3"
       }
     }
   ];

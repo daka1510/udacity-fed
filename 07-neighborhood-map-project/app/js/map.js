@@ -34,6 +34,7 @@ var Map = (function() {
         title: currentItem.name,
         icon: defaultIcon,
         animation: google.maps.Animation.DROP,
+        locationItem: currentItem
       });
 
       // create an on click event to open an infowindow at each marker
@@ -65,7 +66,10 @@ var Map = (function() {
     if(infoWindow.marker != marker) {
       marker.icon = highlightedIcon;
       infoWindow.marker = marker;
-      infoWindow.setContent('<div>Hello World' + marker.title + '</div>');
+      var foursquareId = marker.get("locationItem").foursquare.id;
+      Foursquare.getVenueHours(foursquareId, function(data){
+        infoWindow.setContent('<div>Hello World' + marker.title + '<p>' + JSON.stringify(data) + '</p></div>');
+      });
       infoWindow.open(googleMap, marker);
 
       // make sure the marker property is cleared when the window is closed
@@ -122,15 +126,14 @@ var Map = (function() {
 
   function recenter(locationItem) {
     googleMap.setCenter(locationItem.position);
-    googleMap.setZoom(8);
+    googleMap.setZoom(15);
   }
 
   function showInfoWindow(locationItem){
-    console.log("showing info window for " + JSON.stringify(locationItem));
     var idx = markers.findIndex(function(marker){
-      return marker.title === locationItem.name;
-    })
-    if(idx > 0) {
+      return marker.title == locationItem.name;
+    });
+    if(idx >= 0) {
       populateInfoWindow(markers[idx], largeInfoWindow);
     }
   }
