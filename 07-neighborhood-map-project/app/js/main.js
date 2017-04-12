@@ -19,6 +19,7 @@ var ViewModel = function() {
 
   // observable that holds all known locations
   self.allLocations = ko.observableArray([]);
+  self.venuePhotoUrl = ko.observable("http://www.google.de");
 
   // observable that holds the category filter value
   self.categoryFilter = ko.observable("");
@@ -62,6 +63,10 @@ var ViewModel = function() {
 // function that allows to add locations that are tracked by the view model
 ViewModel.prototype.addLocation = function(locationItem) {
   this.allLocations.push(locationItem);
+};
+
+ViewModel.prototype.setVenuePhotoUrl = function(url) {
+  this.venuePhotoUrl(url);
 };
 
 // initialize view model and apply bindings

@@ -60,6 +60,7 @@ var Map = (function() {
     setMapOnAll(googleMap);
   }
 
+  const infoWindowTemplate = "<h3>{title}</h3><p>{openingHours}</p><img src={imgSrc}></img>";
   // This function (adapted from the course material) populates the infowindow when the marker is clicked.
   function populateInfoWindow(marker, infoWindow) {
     // check to make sure the infowindow is not already opened on this marker
@@ -67,8 +68,15 @@ var Map = (function() {
       marker.icon = highlightedIcon;
       infoWindow.marker = marker;
       var foursquareId = marker.get("locationItem").foursquare.id;
-      Foursquare.getVenueHours(foursquareId, function(data){
-        infoWindow.setContent('<div>Hello World' + marker.title + '<p>' + JSON.stringify(data) + '</p></div>');
+
+      infoWindow.setContent(infoWindowTemplate.replace("{title}", marker.title));
+      Foursquare.getVenuePhotos(foursquareId, "80x80", function(urls){
+        console.log("photo urls: " + JSON.stringify(urls));
+        infoWindow.setContent(infoWindow.getContent().replace("{imgSrc}", urls[0]));
+      });
+      Foursquare.getVenueHours(foursquareId, function(hours){
+        console.log("opening hours: " + JSON.stringify(hours));
+        infoWindow.setContent(infoWindow.getContent().replace("{openingHours}", hours[0]));
       });
       infoWindow.open(googleMap, marker);
 

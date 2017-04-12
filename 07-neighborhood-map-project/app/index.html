@@ -68,6 +68,12 @@
       </div>
     </main>
 
+    <!-- info window content (hidden by default, HTML content is copied into info window when it is opened) -->
+    <div id="infowindow-data" hidden="true">
+      <img data-bind="attr: { src: venuePhotoUrl}"></img>
+      <p>Hello World</p>
+    </div>
+
     <script src='js/main.js'></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBIG1pPil9aDRWGqSPizkOkoqL7HipXOyY&callback=initApp"></script>
   </body>
