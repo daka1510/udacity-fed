@@ -1,4 +1,4 @@
-// function that serves as the main entry point of the application and performs all necessary initializations
+// This function serves as the main entry point of the application and performs all necessary initializations.
 var initApp = function init() {
   // initialize app view
   Map.init();
@@ -6,7 +6,6 @@ var initApp = function init() {
   // add location entries to the Knockout ViewModel and the map
   for (var i = 0; i < LOCATIONS.length; i++) {
     var currentLocation = LOCATIONS[i];
-    //Map.addLocation(currentLocation);
     myViewModel.addLocation(currentLocation);
   };
 
@@ -19,7 +18,6 @@ var ViewModel = function() {
 
   // observable that holds all known locations
   self.allLocations = ko.observableArray([]);
-  self.venuePhotoUrl = ko.observable("http://www.google.de");
 
   // observable that holds the category filter value
   self.categoryFilter = ko.observable("");
@@ -40,7 +38,7 @@ var ViewModel = function() {
     return result;
   });
 
-
+  // observable that holds an array of unique categories
   self.uniqueCategories = ko.computed(function() {
     // map locations to an array of categories
     var categories = self.allLocations().map(function(location) {
@@ -72,10 +70,6 @@ ViewModel.prototype.addLocation = function(locationItem) {
   this.allLocations.push(locationItem);
 };
 
-ViewModel.prototype.setVenuePhotoUrl = function(url) {
-  this.venuePhotoUrl(url);
-};
-
 // initialize view model and apply bindings
 var myViewModel = new ViewModel();
 myViewModel.filteredLocations.subscribe(function(arr){
@@ -83,8 +77,4 @@ myViewModel.filteredLocations.subscribe(function(arr){
   Map.showLocations(arr);
   Map.fitBounds();
 });
-ko.applyBindings(myViewModel, $("#container")[0]);
-
-var infoWindowViewModel = {
-
-};
+ko.applyBindings(myViewModel);

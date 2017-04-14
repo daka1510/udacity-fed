@@ -12,7 +12,7 @@
     <!-- custom styles -->
     <link rel="stylesheet" href="css/style.css" >
 
-    <!-- knockout, bootstrap and dependencies (loaded from CDN for better performance) -->
+    <!-- knockout, bootstrap and dependencies, bluebird promise library (loaded from CDN for better performance) -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js'></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -68,7 +68,7 @@
 
         <div id="infowindow-template" hidden=true>
           <div data-bind="foreach: foursquareVenuePhotos">
-            <img class="rounded-circle" data-bind="attr: {src: $data}"></img>
+            <img class="rounded-circle" data-bind="attr: {src: $data}">
           </div>
           <!-- ko if: foursquareVenueHours().length > 0-->
           <hr>
@@ -85,7 +85,6 @@
           <p>Powered By <a href="https://foursquare.com/">Foursquare</a></p>
         </div>
     </main>
-
 
     <script src='js/main.js'></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBIG1pPil9aDRWGqSPizkOkoqL7HipXOyY&callback=initApp"></script>

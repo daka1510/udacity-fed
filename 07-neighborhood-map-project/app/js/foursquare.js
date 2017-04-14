@@ -1,9 +1,10 @@
 var Foursquare = (function() {
-  const CLIENT_ID = "TYGMNFUJEMDGQ0TBOELKSDYCEWGZUVUUZWBSYGSAGRZDO2OF";
-  const CLIENT_SECRET = "41X4YIXVVNZN3GDVJEF0VPVQMKQBMZM0FPHI5UNCGXNHMUAF"
-  const SUPPORTED_VERSION = "20170409"
+  "use strict";
 
-  // get opening hours for a venue based on its foursquare id
+
+
+  // Function that gets the opening hours for a venue based on a provided foursquare id.
+  // Returns a promise that resolves to an array of opening hour objects. Each of this objects contains a "day", "from", and "to" property.
   function getVenueHours(id) {
     return _getVenueDetails('https://api.foursquare.com/v2/venues/' + id + '/hours', 1)
       .then(data => {
@@ -26,11 +27,12 @@ var Foursquare = (function() {
       });
   }
 
-  // returns an array of photo urls
+  // Function that gets the photos for a venue based on a provided foursquare id.
+  // Returns a promise that resolves to an array of image URLs.
+  // The size string allows to specify the size of the requested image (e.g. 300x400)
   function getVenuePhotos(id, sizeString) {
     return _getVenueDetails('https://api.foursquare.com/v2/venues/' + id + '/photos', 1)
       .then(data => {
-        console.log("raw photos: " + data);
         var urls = [];
         if(data.response.photos.count > 0) {
           for(var i = 0; i < data.response.photos.items.length; i++){
@@ -42,17 +44,7 @@ var Foursquare = (function() {
       });
   };
 
-  function _openingHourString(arr) {
-    var result = "";
-    for(var i = 0; i < arr.length; i++) {
-      var current = arr[i];
-      var start = current.start;
-      var end = current.end;
-      result = result + "(" + current.start + " - " + current.end + ") ";
-    }
-    return result;
-  }
-
+  // Function that resolves an id to a string representation of a day (1 = Monday, 2 = Tuesday, ...)
   function _getDayString(id){
     var day;
     switch(id) {
@@ -83,15 +75,16 @@ var Foursquare = (function() {
     return day;
   }
 
+  // Function that retrieves details about a venue via the foursquare API. Returns a promise.
   function _getVenueDetails(fourSquarUrl, limit) {
     return new Promise(function (resolve, reject) {
       $.ajax({
         url: fourSquarUrl,
         type: 'GET',
         data: {
-          'client_id': CLIENT_ID,
-          'client_secret' : CLIENT_SECRET,
-          'v': SUPPORTED_VERSION,
+          'client_id': CONFIG.FOURSQUARE_CLIENT_ID,
+          'client_secret' : CONFIG.FOURSQURE_CLIENT_SECRET,
+          'v': CONFIG.FOURSQUARE_SUPPORTED_VERSION,
           'limit' : limit
         },
         dataType: 'json',
@@ -100,7 +93,6 @@ var Foursquare = (function() {
         timeout: 5000
       });
     });
-
   }
 
 
