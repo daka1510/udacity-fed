@@ -24,6 +24,12 @@ var ViewModel = function() {
   // observable that holds the category filter value
   self.categoryFilter = ko.observable("");
 
+  // foursquare image urls
+  self.foursquareVenuePhotos = ko.observableArray([]);
+
+  // foursquare venue hours
+  self.foursquareVenueHours = ko.observableArray([]);
+
   // observable that holds the subset of locations based on the selected filter criteria
   self.filteredLocations = ko.computed(function() {
     var filter = self.categoryFilter();
@@ -33,6 +39,7 @@ var ViewModel = function() {
     });
     return result;
   });
+
 
   self.uniqueCategories = ko.computed(function() {
     // map locations to an array of categories
@@ -76,4 +83,8 @@ myViewModel.filteredLocations.subscribe(function(arr){
   Map.showLocations(arr);
   Map.fitBounds();
 });
-ko.applyBindings(myViewModel);
+ko.applyBindings(myViewModel, $("#container")[0]);
+
+var infoWindowViewModel = {
+
+};

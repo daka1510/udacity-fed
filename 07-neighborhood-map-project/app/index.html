@@ -17,6 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/bluebird/3.5.0/bluebird.min.js"></script>
 
     <!-- custom scripts -->
     <script src='js/constants.js'></script>
@@ -64,15 +65,28 @@
             <div id="map"></div>
           </div>
         </div>
-        <div id="map"></div>
       </div>
+
+        <div id="infowindow-template" hidden=true>
+          <div data-bind="foreach: foursquareVenuePhotos">
+            <img class="rounded-circle" data-bind="attr: {src: $data}"></img>
+          </div>
+          <!-- ko if: foursquareVenueHours().length > 0-->
+          <hr>
+          <h5>Opening Hours</h5>
+          <table data-bind="foreach: foursquareVenueHours">
+            <tr>
+              <td data-bind="text: day"></td>
+              <td data-bind="text: from"></td>
+              <td data-bind="text: to"></td>
+            </tr>
+          </table>
+          <!-- /ko -->​
+          <hr>
+          <p>Powered By <a href="https://foursquare.com/">Foursquare</a></p>
+        </div>
     </main>
 
-    <!-- info window content (hidden by default, HTML content is copied into info window when it is opened) -->
-    <div id="infowindow-data" hidden="true">
-      <img data-bind="attr: { src: venuePhotoUrl}"></img>
-      <p>Hello World</p>
-    </div>
 
     <script src='js/main.js'></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBIG1pPil9aDRWGqSPizkOkoqL7HipXOyY&callback=initApp"></script>

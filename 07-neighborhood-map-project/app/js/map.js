@@ -7,8 +7,6 @@ var Map = (function() {
   var highlightedIcon;
   var hoveredIcon;
 
-
-
   // This function initializes the map view and centers the map on the initial location
   function init() {
     googleMap = new google.maps.Map(document.getElementById('map'), {
@@ -19,7 +17,9 @@ var Map = (function() {
     defaultIcon = makeMarkerIcon('0091ff');
     highlightedIcon = makeMarkerIcon('FFFF24');
     hoveredIcon = makeMarkerIcon('FFFE24');
-    largeInfoWindow = new google.maps.InfoWindow();
+    largeInfoWindow = new google.maps.InfoWindow({
+      maxWidth: 500
+    });
   }
 
   var largeInfoWindow
@@ -60,7 +60,6 @@ var Map = (function() {
     setMapOnAll(googleMap);
   }
 
-  const infoWindowTemplate = "<h3>{title}</h3><p>{openingHours}</p><img src={imgSrc}></img>";
   // This function (adapted from the course material) populates the infowindow when the marker is clicked.
   function populateInfoWindow(marker, infoWindow) {
     // check to make sure the infowindow is not already opened on this marker
@@ -68,23 +67,27 @@ var Map = (function() {
       marker.icon = highlightedIcon;
       infoWindow.marker = marker;
       var foursquareId = marker.get("locationItem").foursquare.id;
-
-      infoWindow.setContent(infoWindowTemplate.replace("{title}", marker.title));
-      Foursquare.getVenuePhotos(foursquareId, "80x80", function(urls){
-        console.log("photo urls: " + JSON.stringify(urls));
-        infoWindow.setContent(infoWindow.getContent().replace("{imgSrc}", urls[0]));
-      });
-      Foursquare.getVenueHours(foursquareId, function(hours){
-        console.log("opening hours: " + JSON.stringify(hours));
-        infoWindow.setContent(infoWindow.getContent().replace("{openingHours}", hours[0]));
-      });
-      infoWindow.open(googleMap, marker);
+      infoWindow.setContent("loading data from foursquare ...");
+      Promise.all([Foursquare.getVenuePhotos(foursquareId, "150x150"), Foursquare.getVenueHours(foursquareId)])
+        .then(data => {
+          // all calls succeeded
+          myViewModel.foursquareVenuePhotos(data[0]);
+          myViewModel.foursquareVenueHours(data[1]);
+          infoWindow.setContent($("#infowindow-template").html());
+        })
+        .catch(error => {
+          // at least one call failed
+          infoWindow.setContent("failed to load data from foursquare: " + error.statusText);
+          console.log(error);
+        });
 
       // make sure the marker property is cleared when the window is closed
       infoWindow.addListener('closeclick', function() {
         infoWindow.marker = null;
         marker.setIcon(defaultIcon);
       });
+
+      infoWindow.open(googleMap, marker);
     }
   }
 
