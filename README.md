@@ -9,3 +9,4 @@
 | Project 05 - Classic Arcade Game Clone | [/05-classic-arcade-game-clone](https://daka1510.github.io/udacity-fend/05-classic-arcade-game-clone/app/) |
 | Project 06 - Website Optimization | [/06-website-optimization](https://daka1510.github.io/udacity-fend/06-website-optimization/app/) |
 | Project 07 - Neighborhood Map | [/07-neighborhood-map-project](https://daka1510.github.io/udacity-fend/07-neighborhood-map-project/app/) |
+| Project 08 - Feed Reader Testing | [/08-feed-reader-testing](https://daka1510.github.io/udacity-fend/08-feed-reader-testing/app/) |
