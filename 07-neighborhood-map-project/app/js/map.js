@@ -26,7 +26,7 @@ var Map = (function() {
 
 
   // This function adds an array of location markers to the map view.
-  function showLocations(locationItems) {
+  function addMarkers(locationItems) {
 
     for(var i = 0; i < locationItems.length; i++) {
       var currentItem = locationItems[i];
@@ -98,17 +98,22 @@ var Map = (function() {
     }
   }
 
-  // This function removes the markers from the maps and clears the markers array.
-  function deleteMarkers() {
-    clearMarkers();
-    markers = [];
-  }
+  // This function changes the visibility of location markers on the map. Only location markers
+  // for the provided locations are set to visible.
+  function filterMarkers(arr) {
+    // close open infowindow (no-op if no infowindow is currently open)
+    largeInfoWindow.close();
 
-  // This function removes the markers from the map, but keeps them in the markers array.
-  function clearMarkers() {
-    setMapOnAll(null);
-  }
+    // get names of locations to display
+    var locationNames = arr.map(function(location){
+      return location.name;
+    });
 
+    // loop over all markers, set them to visible if they are contained in the provided name array
+    for(var i = 0; i < markers.length; i++){
+      markers[i].setVisible(locationNames.includes(markers[i].title));
+    }
+  }
 
   // This function sets the map on all markers in the array.
   function setMapOnAll(map) {
@@ -122,7 +127,9 @@ var Map = (function() {
     var bounds = new google.maps.LatLngBounds();
     // Extend the boundaries of the map for each marker and display the marker
     for (var i = 0; i < markers.length; i++) {
-      bounds.extend(markers[i].position);
+      if(markers[i].getVisible()) {
+        bounds.extend(markers[i].position);
+      }
     }
     googleMap.fitBounds(bounds);
   }
@@ -161,9 +168,9 @@ var Map = (function() {
 
   return {
     init: init,
-    showLocations: showLocations,
+    addMarkers: addMarkers,
+    filterMarkers: filterMarkers,
     fitBounds: fitBounds,
-    deleteMarkers: deleteMarkers,
     recenter: recenter,
     showInfoWindow: showInfoWindow
   };

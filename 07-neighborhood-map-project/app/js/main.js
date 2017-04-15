@@ -9,8 +9,17 @@ var initApp = function init() {
     myViewModel.addLocation(currentLocation);
   }
 
+  // add location markers
+  Map.addMarkers(myViewModel.allLocations());
+
   // recenter map
   Map.fitBounds();
+
+  // register for filter events, hide / show markers accordingly
+  myViewModel.filteredLocations.subscribe(function(arr){
+    Map.filterMarkers(arr);
+    Map.fitBounds();
+  });
 };
 
 // This function displays an alert window indicating that loading the map failed
@@ -77,9 +86,4 @@ ViewModel.prototype.addLocation = function(locationItem) {
 
 // initialize view model and apply bindings
 var myViewModel = new ViewModel();
-myViewModel.filteredLocations.subscribe(function(arr){
-  Map.deleteMarkers();
-  Map.showLocations(arr);
-  Map.fitBounds();
-});
 ko.applyBindings(myViewModel);
