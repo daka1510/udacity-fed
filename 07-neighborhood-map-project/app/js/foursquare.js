@@ -1,8 +1,6 @@
 var Foursquare = (function() {
   "use strict";
 
-
-
   // Function that gets the opening hours for a venue based on a provided foursquare id.
   // Returns a promise that resolves to an array of opening hour objects. Each of this objects contains a "day", "from", and "to" property.
   function getVenueHours(id) {
@@ -13,11 +11,16 @@ var Foursquare = (function() {
           for(var i = 0; i < data.response.hours.timeframes.length; i++) {
             var timeframe = data.response.hours.timeframes[i];
             for(var j = 0; j < timeframe.days.length; j++) {
+              // e.g. 1700
               var fromUnformatted = timeframe.open[0].start;
+              // e.g. 1800 or +0200 (the optional + indicates the next day and is not relevant for this use-case)
               var toUnformatted = timeframe.open[0].end.startsWith("+") ? timeframe.open[0].end.substr(1) : timeframe.open[0].end;
+              // assemble result object
               openingHours.push({
                 "day" : _getDayString(timeframe.days[j]),
+                // e.g. 17:00
                 "from" : [fromUnformatted.slice(0, 2), ":", fromUnformatted.slice(2)].join(''),
+                // e.g. 02:00
                 "to" : [toUnformatted.slice(0, 2), ":", toUnformatted.slice(2)].join('')
               });
             }
@@ -94,7 +97,6 @@ var Foursquare = (function() {
       });
     });
   }
-
 
   return {
     getVenueHours: getVenueHours,

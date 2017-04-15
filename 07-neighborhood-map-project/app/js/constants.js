@@ -1,3 +1,4 @@
+// global app configuration constants
 const CONFIG = {
   INITIAL_LOCATION: {
     lat: 48.6793649,
@@ -6,8 +7,14 @@ const CONFIG = {
   FOURSQUARE_CLIENT_ID: "TYGMNFUJEMDGQ0TBOELKSDYCEWGZUVUUZWBSYGSAGRZDO2OF",
   FOURSQURE_CLIENT_SECRET:  "41X4YIXVVNZN3GDVJEF0VPVQMKQBMZM0FPHI5UNCGXNHMUAF",
   FOURSQUARE_SUPPORTED_VERSION: "20170409"
+  // improvement options: manage addition configurations options centrally, e.g.
+  // - google maps API key
+  // - default map zoom level
+  // - default request timeout for external API calls
 };
 
+// dummy location data
+// in a "real-world" application, this data would be served from a database or back-end service.
 const LOCATIONS = [
     {
       name : "The Tipsy Crow",

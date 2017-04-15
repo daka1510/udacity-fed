@@ -3,10 +3,9 @@
 ## Getting Started
 - Option 1: run locally
   - `npm install`
-  - `gulp serve`
-  - open [http://localhost:8080](http://localhost:8080)
+  - `gulp`
 - Option 2: use hosted site
-  - open [https://daka1510.github.io/udacity-fend/07-neighborhood-map-project/app/](https://daka1510.github.io/udacity-fend/07-neighborhood-map-project/app/)
+  - open [https://daka1510.github.io/udacity-fend/07-neighborhood-map-project/app/](https://daka1510.github.io/udacity-fend/07-neighborhood-map-project/app/  )
 
 ## External APIs
 - [Google Maps API](https://developers.google.com/maps/documentation/javascript/)
