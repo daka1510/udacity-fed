@@ -88,6 +88,10 @@ var Map = (function() {
       });
 
       infoWindow.open(googleMap, marker);
+
+      // makes sure the infowindow is displayed in the visible area
+      recenter(marker);
+      googleMap.panBy(0,-200);
     }
   }
 
@@ -138,7 +142,7 @@ var Map = (function() {
   // This function recenters the map based on the provided location.
   function recenter(locationItem) {
     googleMap.setCenter(locationItem.position);
-    googleMap.setZoom(15);
+    // googleMap.setZoom(15);
   }
 
   function showInfoWindow(locationItem) {
