@@ -5,7 +5,6 @@ var Map = (function() {
   var markers = [];
   var defaultIcon;
   var hoveredIcon;
-  var highlightedIcon;
   var largeInfoWindow;
 
   // This function initializes the map view and centers the map on the initial location
@@ -17,7 +16,6 @@ var Map = (function() {
 
     defaultIcon = makeMarkerIcon('0091ff');
     hoveredIcon = makeMarkerIcon('FFFF24');
-    highlightedIcon = makeMarkerIcon('FF0000');
     largeInfoWindow = new google.maps.InfoWindow();
 
     // make map display responsively
@@ -64,9 +62,9 @@ var Map = (function() {
   function populateInfoWindow(marker, infoWindow) {
     // make sure the infowindow is not already opened on this marker
     if(infoWindow.marker != marker) {
-      // highlight marker for 1.5s (when it is selected via the list view / clicked directly)
-      marker.setIcon(highlightedIcon);
-      setTimeout(function(){ marker.setIcon(defaultIcon); }, 1500);
+      // marker bounces once when the infowindow is opened
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(function(){ marker.setAnimation(null); }, 750);
       infoWindow.marker = marker;
       var foursquareId = marker.get("locationItem").foursquare.id;
       infoWindow.setContent("loading data from foursquare ...");
