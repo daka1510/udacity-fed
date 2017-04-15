@@ -97,7 +97,7 @@ var Map = (function() {
     // templated markup fragments
     var markupPhoto = '<div><img class="rounded-circle" alt="sample image" src="{url}"></div>';
     var markupOpeningHours = '<h5>Opening Hours</h5><table>{data}</table>';
-    var markupOpeningHour = '<tr><td>{day}</td><td>{from}</td><td>{to}</td></tr>'
+    var markupOpeningHour = '<tr><td>{day}</td><td>{from}</td><td>{to}</td></tr>';
     var markupAttribution = '<p>Powered By <a href="https://foursquare.com/">Foursquare</a></p>';
     var markupDelimiter = "<hr>";
     var result = '';
