@@ -71,13 +71,8 @@ var Map = (function() {
       // retrieve data from foursquare (asynchronously)
       Promise.all([Foursquare.getVenuePhotos(foursquareId, "150x150"), Foursquare.getVenueHours(foursquareId)])
         .then(data => {
-          // all calls succeeded
-          myViewModel.foursquareVenuePhotos(data[0]);
-          myViewModel.foursquareVenueHours(data[1]);
-          // knockout does not provide support for binding dynamically injected HTML fragments
-          // use a slightly different approach here: copy template that was bound before and was updated in response
-          // to the above view model changes
-          infoWindow.setContent($("#infowindow-template").html());
+          // set infowindow markup via Google Maps API
+          infoWindow.setContent(getInfoWindowMarkup(data[0], data[1]));
         })
         .catch(error => {
           // at least one call failed
@@ -87,7 +82,6 @@ var Map = (function() {
       // make sure the marker property is cleared when the window is closed
       infoWindow.addListener('closeclick', function() {
         infoWindow.marker = null;
-        marker.setIcon(defaultIcon);
       });
 
       infoWindow.open(googleMap, marker);
@@ -96,6 +90,30 @@ var Map = (function() {
       recenter(marker);
       googleMap.panBy(0,-200);
     }
+  }
+
+  // This function computes the dynamic markup of the infowindow
+  function getInfoWindowMarkup(venuePhotos, venueHours) {
+    // templated markup fragments
+    var markupPhoto = '<div><img class="rounded-circle" alt="sample image" src="{url}"></div>';
+    var markupOpeningHours = '<h5>Opening Hours</h5><table>{data}</table>';
+    var markupOpeningHour = '<tr><td>{day}</td><td>{from}</td><td>{to}</td></tr>'
+    var markupAttribution = '<p>Powered By <a href="https://foursquare.com/">Foursquare</a></p>';
+    var markupDelimiter = "<hr>";
+    var result = '';
+    if(venuePhotos && venuePhotos.length > 0) {
+      result += markupPhoto.replace("{url}", venuePhotos[0]); // future improvements: provide support for multiple image urls
+    }
+    if(venueHours && venueHours.length > 0) {
+      result += markupDelimiter;
+      var tmp = '';
+      for (var i = 0; i < venueHours.length; i++) {
+        tmp += markupOpeningHour.replace("{day}", venueHours[i].day).replace("{from}", venueHours[i].from).replace("{to}", venueHours[i].to);
+      }
+      result += markupOpeningHours.replace("{data}", tmp);
+    }
+    result += markupDelimiter + markupAttribution;
+    return result;
   }
 
   // This function changes the visibility of location markers on the map. Only location markers
