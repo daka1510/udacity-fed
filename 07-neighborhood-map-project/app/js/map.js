@@ -19,6 +19,11 @@ var Map = (function() {
     hoveredIcon = makeMarkerIcon('FFFF24');
     highlightedIcon = makeMarkerIcon('FF0000');
     largeInfoWindow = new google.maps.InfoWindow();
+
+    // make map display responsively
+    google.maps.event.addDomListener(window, 'resize', function() {
+      fitBounds();
+    });
   }
 
 
