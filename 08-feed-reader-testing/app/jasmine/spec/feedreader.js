@@ -113,9 +113,12 @@ $(function() {
          */
          it('content changes when new feed is selected', function(done) {
             var firstEntryBeforeSelectionChanged = $('.feed').children('.entry-link').children('.entry').html();
+            // sanity check: matching element found
+            expect(firstEntryBeforeSelectionChanged).toBeDefined();
 
             loadFeed(1, function() {
                 var firstEntryAfterSelectionChanged = $('.feed').children('.entry-link').children('.entry').html();
+                expect(firstEntryAfterSelectionChanged).toBeDefined();
                 expect(firstEntryBeforeSelectionChanged).not.toBe(firstEntryAfterSelectionChanged);
                 done();
             });
