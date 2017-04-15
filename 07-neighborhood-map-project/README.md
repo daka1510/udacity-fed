@@ -15,8 +15,8 @@
 ### Required
 - [fixed](https://github.com/daka1510/udacity-fend/commit/448547c13f8292b10d6a91210ab3d69178f0f2e8  ) - Filter function should show / hide markers instead of re-creating them.
 - [fixed](https://github.com/daka1510/udacity-fend/commit/549c9d520d5a4c39a13e34d48ca663b868206f2f) - Clicking on marker must also animate it to indicate its active state. Please note the mouse-over animation doesn't count here.
-- [todo]() - DOM manipulation must utilize either Knockout's MVVM pattern or Google Map library, but not by using jQuery, Javascript DOM methods nor any other libraries.
-- [fixed]() - Google Map API request needs to be provided with an error handling method
+- [fixed](https://github.com/daka1510/udacity-fend/commit/3a964509fbfaa66d699e951fdbbcec70a3dbae10) - DOM manipulation must utilize either Knockout's MVVM pattern or Google Map library, but not by using jQuery, Javascript DOM methods nor any other libraries.
+- [fixed](https://github.com/daka1510/udacity-fend/commit/9e451f182233fe1de37841f68017cc82c088b000) - Google Map API request needs to be provided with an error handling method
 
 ### Suggested
 - [fixed](https://github.com/daka1510/udacity-fend/commit/c9c724346173f74ef0a319919d6bae1650cd419b) - Code doesn't pass JSHint check. Warnings need to be fixed.
