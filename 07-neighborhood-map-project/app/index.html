@@ -67,24 +67,24 @@
         </div>
       </div>
 
-        <div id="infowindow-template" hidden=true>
-          <div data-bind="foreach: foursquareVenuePhotos">
-            <img class="rounded-circle" data-bind="attr: {src: $data}">
-          </div>
-          <!-- ko if: foursquareVenueHours().length > 0-->
-          <hr>
-          <h5>Opening Hours</h5>
-          <table data-bind="foreach: foursquareVenueHours">
-            <tr>
-              <td data-bind="text: day"></td>
-              <td data-bind="text: from"></td>
-              <td data-bind="text: to"></td>
-            </tr>
-          </table>
-          <!-- /ko -->​
-          <hr>
-          <p>Powered By <a href="https://foursquare.com/">Foursquare</a></p>
+      <div id="infowindow-template" class="hidden">
+        <div data-bind="foreach: foursquareVenuePhotos">
+          <img class="rounded-circle" alt="sample image" src="" data-bind="attr: {src: $data}">
         </div>
+        <!-- ko if: foursquareVenueHours().length > 0-->
+        <hr>
+        <h5>Opening Hours</h5>
+        <table data-bind="foreach: foursquareVenueHours">
+          <tr>
+            <td data-bind="text: day"></td>
+            <td data-bind="text: from"></td>
+            <td data-bind="text: to"></td>
+          </tr>
+        </table>
+        <!-- /ko -->​
+        <hr>
+        <p>Powered By <a href="https://foursquare.com/">Foursquare</a></p>
+      </div>
     </main>
 
     <script src='js/main.js'></script>
