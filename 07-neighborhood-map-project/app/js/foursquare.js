@@ -45,7 +45,7 @@ var Foursquare = (function() {
         }
         return urls;
       });
-  };
+  }
 
   // Function that resolves an id to a string representation of a day (1 = Monday, 2 = Tuesday, ...)
   function _getDayString(id){

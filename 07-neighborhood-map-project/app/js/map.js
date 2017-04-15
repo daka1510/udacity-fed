@@ -6,7 +6,7 @@ var Map = (function() {
   var defaultIcon;
   var hoveredIcon;
   var highlightedIcon;
-  var largeInfoWindow
+  var largeInfoWindow;
 
   // This function initializes the map view and centers the map on the initial location
   function init() {

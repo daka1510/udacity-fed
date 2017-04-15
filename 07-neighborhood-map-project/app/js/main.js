@@ -7,11 +7,11 @@ var initApp = function init() {
   for (var i = 0; i < LOCATIONS.length; i++) {
     var currentLocation = LOCATIONS[i];
     myViewModel.addLocation(currentLocation);
-  };
+  }
 
   // recenter map
   Map.fitBounds();
-}
+};
 
 var ViewModel = function() {
   var self = this;
