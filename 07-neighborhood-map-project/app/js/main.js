@@ -13,6 +13,11 @@ var initApp = function init() {
   Map.fitBounds();
 };
 
+// This function displays an alert window indicating that loading the map failed
+mapError = () => {
+  window.alert("Failed to load the map.");
+};
+
 var ViewModel = function() {
   var self = this;
 
