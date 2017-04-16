@@ -81,9 +81,7 @@ $(function() {
     /* Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         /* Write a test that ensures when the loadFeed
@@ -102,9 +100,7 @@ $(function() {
     /* Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         /* Write a test that ensures when a new feed is loaded
