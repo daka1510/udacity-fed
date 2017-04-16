@@ -90,10 +90,8 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-         it('contain at least one element', function(done) {
-            expect($('.feed').children('.entry-link').length).toBeGreaterThan(0);
-            expect($('.feed').children('.entry-link').children(".entry").length).toBeGreaterThan(0);
-            done();
+         it('contain at least one element', function() {
+            expect($('.feed .entry-link .entry').length).toBeGreaterThan(0);
          });
     });
 
@@ -108,12 +106,12 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
          it('content changes when new feed is selected', function(done) {
-            var firstEntryBeforeSelectionChanged = $('.feed').children('.entry-link').children('.entry').html();
+            var firstEntryBeforeSelectionChanged = $('.feed .entry-link .entry').html();
             // sanity check: matching element found
             expect(firstEntryBeforeSelectionChanged).toBeDefined();
 
             loadFeed(1, function() {
-                var firstEntryAfterSelectionChanged = $('.feed').children('.entry-link').children('.entry').html();
+                var firstEntryAfterSelectionChanged = $('.feed .entry-link .entry').html();
                 expect(firstEntryAfterSelectionChanged).toBeDefined();
                 expect(firstEntryBeforeSelectionChanged).not.toBe(firstEntryAfterSelectionChanged);
                 done();
